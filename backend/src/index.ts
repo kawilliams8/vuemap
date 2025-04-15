@@ -1,40 +1,47 @@
 import express from "express";
-import mysql from "mysql2";
+import { graphqlHTTP } from "express-graphql";
+import { buildSchema } from "graphql";
 import cors from "cors";
-import dotenv from "dotenv";
+import { pool } from "./db";
 
-dotenv.config();
+// Schema with a new type
+const schema = buildSchema(`
+  type Location {
+    id: ID
+    name: String
+    latitude: Float
+    longitude: Float
+  }
+
+  type Query {
+    locations: [Location]
+  }
+`);
+
+// Resolver
+const root = {
+  locations: async () => {
+    const [rows] = await pool.query(
+      "SELECT id, name, latitude, longitude FROM locations"
+    );
+    return rows;
+  },
+};
 
 const app = express();
-app.use(cors());
-app.use(express.json());
+app.use(cors()); // Enable for all origins
+// OR for stricter control:
+// app.use(cors({ origin: 'http://localhost:5173' }));
 
-const db = mysql.createConnection({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASS,
-  database: process.env.DB_NAME,
-});
+app.use(
+  "/graphql",
+  graphqlHTTP({
+    schema,
+    rootValue: root,
+    graphiql: true,
+  })
+);
 
-db.connect((err) => {
-  if (err) {
-    console.error("DB connection failed:", err.stack);
-    return;
-  }
-  console.log("Connected to MySQL index.ts");
-});
-
-app.get("/api/locations", (req, res) => {
-  db.query("SELECT * FROM locations", (err, results) => {
-    if (err) {
-      console.error(err);
-      return res.status(500).json({ error: "Database error" });
-    }
-    res.json(results);
-  });
-});
-
-const port = process.env.PORT || 3000;
-app.listen(port, () => {
-  console.log(`Server running on http://localhost:${port}`);
+app.listen(4000, () => {
+  console.log(`🚀 Server running at http://localhost:4000/graphql`);
 });

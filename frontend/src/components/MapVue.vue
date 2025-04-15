@@ -15,10 +15,26 @@ onMounted(() => {
     center: [-74.5, 40], // example coords
     zoom: 9
   })
-  fetch('http://localhost:3000/api/locations')
-  .then(res => res.json())
-  .then(data => {
-    console.log(data) // [{ name: 'Trailhead A', lat, lng }, ...]
+  fetch('http://localhost:4000/graphql', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      query: `
+      query {
+        locations {
+          id
+          name
+          latitude
+          longitude
+        }
+      }
+    `,
+    }),
   })
+    .then((response) => response.json())
+    .then((data) => console.log(data.data.locations))
+    .catch((error) => console.error('Error fetching data:', error));
 })
 </script>
