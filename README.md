@@ -4,8 +4,8 @@ A personal project to flex Vue, Mapbox and node/express. View, add, edit and del
 
 ## Tech Stack
 
-- **Frontend:** Vue.js, Vite, Mapbox
-- **Backend:** Node.js, Express, MySQL
+- **Frontend:** Vue.js, Vite, Mapbox, TypeScript
+- **Backend:** Node.js, Express, MySQL, TypeScript
 
 ## Getting Started
 

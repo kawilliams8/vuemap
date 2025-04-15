@@ -1,12 +1,12 @@
 <template>
-  <div id="map" style="width: 100%; height: 400px;"></div>
+  <div id="map" style="width: 100%; height: 600px;"></div>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import mapboxgl from 'mapbox-gl'
 import { onMounted } from 'vue'
 
-mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_TOKEN
+mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_TOKEN;
 
 onMounted(() => {
   new mapboxgl.Map({
