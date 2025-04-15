@@ -1,11 +1,11 @@
 # Vue Map
 
-A personal project to flex Vue, Mapbox and node/express. View, add, edit and delete points and polygons on a map to plot unseen places on a map.
+A personal project to flex Vue, Mapbox, GraphQL and node/express. View, add, edit and delete points and polygons on a map to plot unseen places on a map.
 
 ## Tech Stack
 
 - **Frontend:** Vue.js, Vite, Mapbox, TypeScript
-- **Backend:** Node.js, GraphQL, Express, MySQL, TypeScript
+- **Backend:** Node.js, GraphQL, GraphiQL, Express, MySQL, TypeScript
 
 ## Getting Started
 
