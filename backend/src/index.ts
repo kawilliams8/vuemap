@@ -21,7 +21,7 @@ db.connect((err) => {
     console.error("DB connection failed:", err.stack);
     return;
   }
-  console.log("Connected to MySQL");
+  console.log("Connected to MySQL index.ts");
 });
 
 app.get("/api/locations", (req, res) => {
