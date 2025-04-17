@@ -30,9 +30,9 @@
 
 - [x] Initialize Vue project with Vite
 - [x] Add basic README and documentation
-- [ ] Set up ESLint and Prettier for code quality
+- [x] Set up ESLint and Prettier for code quality
 - [x] Create basic folder structure
-- [ ] Add testing framework and first test
+- [x] Add testing framework and first test
 
 ### Step 2: Add Vue Router and Base Components
 
