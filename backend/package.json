@@ -7,7 +7,9 @@
     "build": "tsc",
     "start": "node dist/index.js",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write \"src/**/*.{js,ts,vue,css,scss}\"",
+    "format:check": "prettier --check \"src/**/*.{js,ts,vue,css,scss}\""
   },
   "keywords": [],
   "author": "",

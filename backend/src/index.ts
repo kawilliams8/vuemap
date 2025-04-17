@@ -1,8 +1,8 @@
-import express from "express";
-import { graphqlHTTP } from "express-graphql";
-import { buildSchema } from "graphql";
-import cors from "cors";
-import { pool } from "./db";
+import express from 'express';
+import { graphqlHTTP } from 'express-graphql';
+import { buildSchema } from 'graphql';
+import cors from 'cors';
+import { pool } from './db';
 
 // Schema with a new type
 const schema = buildSchema(`
@@ -22,7 +22,7 @@ const schema = buildSchema(`
 const root = {
   locations: async () => {
     const [rows] = await pool.query(
-      "SELECT id, name, latitude, longitude FROM locations"
+      'SELECT id, name, latitude, longitude FROM locations'
     );
     return rows;
   },
@@ -34,7 +34,7 @@ app.use(cors()); // Enable for all origins
 // app.use(cors({ origin: 'http://localhost:5173' }));
 
 app.use(
-  "/graphql",
+  '/graphql',
   graphqlHTTP({
     schema,
     rootValue: root,
