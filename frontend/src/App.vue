@@ -1,32 +1,47 @@
-<script lang="ts" setup>
-import HelloWorld from './components/HelloWorld.vue';
-import MapVue from './components/MapVue.vue';
-</script>
-
 <template>
-  <MapVue />
-  <!-- <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div> -->
-  <HelloWorld msg="Vite + Vue" />
+  <div id="app-wrapper">
+    <div id="sidebar">Sidebar</div>
+    <div id="content">
+      <p><strong>Current route path:</strong> {{ $route.fullPath }}</p>
+      <nav id="nav">
+        <RouterLink to="/">Go to Home</RouterLink>
+        <RouterLink to="/map">Go to Map</RouterLink>
+      </nav>
+      <main>
+        <RouterView />
+      </main>
+    </div>
+  </div>
 </template>
 
 <style scoped>
-.logo {
-  height: 3em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+#app-wrapper {
+  color: #888;
+  margin: 10px;
+  display: flex;
+  min-height: 96vh;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+#sidebar {
+  background: white;
+  display: flex;
+  width: 25%;
+  margin-right: 10px;
+  border: 1px solid lightgray;
+  padding: 10px;
 }
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+#content {
+  background: white;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border: 1px solid lightgray;
+  padding: 10px;
+}
+#nav {
+  width: 25%;
+  border: 2px solid pink;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
 </style>

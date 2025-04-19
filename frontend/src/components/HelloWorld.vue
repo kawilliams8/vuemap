@@ -1,9 +1,16 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
 
 defineProps({
   msg: String,
 });
+
+const goToMap = () => {
+  router.replace('/map');
+};
 
 const count = ref(0);
 </script>
@@ -34,6 +41,7 @@ const count = ref(0);
     >.
   </p>
   <p class="read-the-docs">Click on the Vite and Vue logos to learn more</p>
+  <button @click="goToMap">Go to Map</button>
 </template>
 
 <style scoped>
